@@ -3,7 +3,7 @@ name: Build and Deploy to Firebase
 on:
   push:
     branches:
-      - demo01   
+      - demo01
 
 jobs:
   build_and_deploy:
@@ -27,5 +27,5 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Deploy to Firebase
-        run: firebase deploy --token "$FIREBASE_TOKEN"
+      - name: Deploy to Firebase Preview Channel
+        run: firebase hosting:channel:deploy demo01 --token "$FIREBASE_TOKEN"
