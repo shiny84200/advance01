@@ -1,0 +1,81 @@
+<p>reactivecompoent works!</p>
+
+<form [formGroup]="reactiveForm">
+
+  <div>
+    <label>Name</label>
+    <input type="text" formControlName="name" placeholder="Enter the name" />
+  </div>
+    @if(reactiveForm.get('name')?.hasError('already')){
+  <div>
+already exsist
+  </div>
+}
+
+  <div>
+    <label>Age</label>
+    <input type="number" formControlName="age" placeholder="Enter the age" />
+  </div>
+
+  <div formArrayName="hobbies">
+    <label>Hobbies</label>
+    <div *ngFor="let hobby of hobbies.controls; let i = index">
+      <input type="text" [formControlName]="i" placeholder="Enter hobby" />
+      <button type="button" (click)="removeHobbies(i)">remove hobby</button>
+    </div>
+
+    <button type="button" (click)="addHobbies()">add hobby</button>
+  </div>
+
+  <div formArrayName="address">
+    <label> addres</label>
+    <div *ngFor="let array of address.controls;let i=index" [formGroupName]="i">
+      <input type="text" formControlName="street" />
+      <input type="text" formControlName="housenumber" />
+      <button (click)="deleteAddress(i)"> delete Address</button>
+    </div>
+    <button (click)="addAddress()"> Add Address</button>
+
+  </div>
+    @if(reactiveForm.get('address')?.hasError('oneform')){
+
+  <div>
+    oneform
+  </div>
+}
+
+  <div>
+    <label>Paasowrd</label>
+    <input [type]="hide ? 'password' : 'text'"  formControlName="password"/>
+
+    <button type="button" (click)="hide = !hide">
+      <mat-icon>
+        {{ hide ? 'visibility_off' : 'visibility' }}
+      </mat-icon>
+    </button>
+  </div>
+  @if(reactiveForm.get('password')?.hasError('invalid')){
+  <div>
+Invalid password
+  </div>
+}
+  <div>
+    <label>Paasowrd</label>
+    <input [type]="hide ? 'password' : 'text'"  formControlName="confirmpassword"/>
+
+    <button type="button" (click)="hide = !hide">
+      <mat-icon>
+        {{ hide ? 'visibility_off' : 'visibility' }}
+      </mat-icon>
+    </button>
+  </div>
+  @if(reactiveForm.get('confirmpassword')?.hasError('invalid')){
+  <div>
+Invalid password
+  </div>
+}
+</form>
+  @if(reactiveForm?.hasError('mismatch')){
+  <div>
+mismatch  </div>
+}

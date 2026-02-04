@@ -1,0 +1,32 @@
+<div>
+  {{"name" | custom}}
+</div>
+<!-- structural directive -->
+<div *appStructural="false">
+  <span>data will display</span>
+</div>
+
+<!-- attribe directive -->
+<div [appAttribute]="'red'">attribute</div>
+
+<!-- input field -->
+<input type="text" #errorinput appErrordirective />
+
+<hr />
+<div style="display: flex;">
+  <div style="flex-direction: column; width: 30%;">
+    <a [routerLink]="'/reactive'">Reactive Forms</a>
+  </div>
+   <div style="flex-direction: column; width: 30%;">
+    <a [routerLink]="'/table'">Table</a>
+  </div>
+  <div style="flex-direction: column; width: 30%;">
+    <a [routerLink]="'/rxjs'">RXJS</a>
+  </div>
+  <div style="flex-direction: column; width: 30%;">
+    <a [routerLink]="'/state'">state</a>
+  </div>
+</div>
+<hr>
+<ng-container #container></ng-container>
+<router-outlet></router-outlet>

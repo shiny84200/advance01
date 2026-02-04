@@ -1,0 +1,24 @@
+<p>dynamiccom works!</p>
+<input type="text" appCustomDirective>
+<div *appStrcuturaldirective="true">Structural</div>
+<mat-form-field appearance="outline">
+  <mat-label>Search fruit</mat-label>
+
+  <input
+    matInput
+    type="text"
+    [formControl]="searchControl"
+    [matAutocomplete]="auto"
+  />
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let option of options"
+      [value]="option"
+    >
+      {{ option }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+<div>{{user | json}}</div>
+

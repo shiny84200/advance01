@@ -1,0 +1,9 @@
+
+
+@function double($value) {
+  @return $value * 2;
+}
+
+.box {
+  width: double(50px); // 100px
+}
